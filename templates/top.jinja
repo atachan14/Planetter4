@@ -1,0 +1,16 @@
+{% extends "base.jinja" %}
+{% block body %}
+  <div class="top-root">
+    <header>
+      <h1 class="site-title">Planetter4</h1>
+    </header>
+    <main>
+      <div class="login-box">
+        <input id="login-username" type="text" placeholder="アカウント名" />
+        <input id="login-password" type="password" placeholder="パスワード" />
+        <button id="login-button">ログイン／新規登録</button>
+        <div id="login-error" class="red-text"></div>
+      </div>
+    </main>
+  </div>
+{% endblock body %}

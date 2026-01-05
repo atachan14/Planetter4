@@ -1,0 +1,10 @@
+<div class="foot-bar flex-row">
+  <div class="flex-row">
+    <form method="post" action="/">
+      <button type="submit" name="action" value="logout" class="logout">ログアウト</button>
+    </form>
+    <div>{{ self_data.username }}</div>
+    <span>（{{ self_data.survive_days }}日目）</span>
+  </div>
+  <div class="flex-row">星屑: {{ self_data.f_stardust }}</div>
+</div>
