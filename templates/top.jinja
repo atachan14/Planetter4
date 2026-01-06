@@ -1,16 +1,30 @@
-{% extends "base.jinja" %}
-{% block body %}
-  <div class="top-root">
-    <header>
-      <h1 class="site-title">Planetter4</h1>
-    </header>
-    <main>
-      <div class="login-box">
-        <input id="login-username" type="text" placeholder="アカウント名" />
-        <input id="login-password" type="password" placeholder="パスワード" />
-        <button id="login-button">ログイン／新規登録</button>
-        <div id="login-error" class="red-text"></div>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Planetter4</title>
+    <meta name="description" content="Planetter4">
+    <meta name="keywords" content="planet, sns">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/main.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div id="app-root">
+      <div class="top-root">
+        <header>
+          <h1 class="site-title">Planetter4</h1>
+        </header>
+        <main>
+          <div class="login-box">
+            <input id="login-username" type="text" placeholder="アカウント名" />
+            <input id="login-password" type="password" placeholder="パスワード" />
+            <button id="login-button">ログイン／新規登録</button>
+            <div id="login-error" class="red-text"></div>
+          </div>
+        </main>
       </div>
-    </main>
-  </div>
-{% endblock body %}
+      <script src="{{ url_for('static', filename='js/top.js') }}"></script>
+    </div>
+  </body>
+</html>

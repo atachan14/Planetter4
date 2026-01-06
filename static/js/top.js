@@ -1,32 +1,56 @@
-document.getElementById("login-button").addEventListener("click", async () => {
-  const username = document.getElementById("login-username").value.trim();
-  const password = document.getElementById("login-password").value;
+// top.js
 
+document.addEventListener("DOMContentLoaded", () => {
+  const loginButton = document.getElementById("login-button");
+  const usernameInput = document.getElementById("login-username");
+  const passwordInput = document.getElementById("login-password");
   const errorEl = document.getElementById("login-error");
-  errorEl.textContent = "";
 
-  if (!username || !password) {
-    errorEl.textContent = "未入力";
-    return;
-  }
+  loginButton.addEventListener("click", async () => {
+    errorEl.textContent = "";
 
-  const res = await fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      action: "login",
-      username,
-      password,
-    }),
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value;
+
+    if (!username) {
+      errorEl.textContent = "アカウント名が未入力です";
+      return;
+    }
+     if (!password) {
+      errorEl.textContent = "パスワードが未入力です";
+      return;
+    }
+    try {
+      const res = await fetch("/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        errorEl.textContent = data.message || "パスワードが間違っています";
+        return;
+      }
+
+      // 認証成功 → main へ
+      const html = await fetch("/partial/main").then(r => r.text());
+      document.getElementById("app-root").innerHTML = html;
+
+    } catch (e) {
+      errorEl.textContent = "通信エラー";
+    }
   });
 
-  if (!res.ok) {
-    const data = await res.json();
-    errorEl.textContent = data.message ?? "ログイン失敗";
-    return;
-  }
-
-  // 成功したら state を進める
-  appState.screen = "landing";
-  render();
+  // Enterキー対応（任意）
+  passwordInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      loginButton.click();
+    }
+  });
 });

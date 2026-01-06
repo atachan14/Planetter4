@@ -1,22 +1,17 @@
-{% extends "base.jinja" %}
-{% block body %}
-  <div class="main-root">
-    <header>
-      {% include "main_parts/head-bar.jinja" %}
-    </header>
-    <div class="layout-cutter">
-      {% if pops.dialog %}
-        {% include "main_parts/dialog.jinja" %}
-      {% endif %}
-      <main>
-        {% include content_template %}
-      </main>
-      <aside>
-        {% include "main_parts/aside-bar.jinja" %}
-      </aside>
-    </div>
-    <footer>
-      {% include "main_parts/foot-bar.jinja" %}
-    </footer>
+<div class="main-root">
+  <header>
+    {% include "main_parts/head-bar.jinja" %}
+  </header>
+  <div class="layout-cutter">
+    <main id="main-content">
+      <!-- landing / planet がここに入る -->
+    </main>
+    <aside>
+      {% include "main_parts/aside-bar.jinja" %}
+    </aside>
   </div>
-{% endblock body %}
+  <footer>
+    {% include "main_parts/foot-bar.jinja" %}
+  </footer>
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
