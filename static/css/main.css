@@ -51,7 +51,22 @@ body {
     margin: 0;
 }
 
+#app-root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+
+}
+
 /* top */
+.top-root {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto auto;
+}
+
 .site-title {
     font-size: clamp(3rem, 10vw, 15rem);
     margin: 0.5em 0;
@@ -71,22 +86,16 @@ body {
     max-width: 300px;
 }
 
+
+
 /* layout-main */
 .main-root {
     display: flex;
     flex-direction: column;
     height: 100%;
     text-align: center;
-    margin: 0;
 }
 
-.main-root header {
-    height: 5vh;
-}
-
-.main-root footer {
-    height: 5vh;
-}
 
 .main-root .layout-cutter {
     display: flex;
@@ -400,7 +409,7 @@ body {
     min-height: auto;
     display: flex;
     flex-direction: column;
-    flex:1;
+    flex: 1;
 }
 
 /* none */

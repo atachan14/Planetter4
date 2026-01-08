@@ -17,7 +17,7 @@ def partial_main():
     try:
         db_now = fetch_db_now(cur)
         self_data = fetch_latest_user_data(cur, session["self_id"],db_now)
-        planet_data = fetch_planet_data(cur, self_data["planet_id"])
+        planet_data = fetch_planet_data(cur, self_data.planet_id)
     finally:
         cur.close()
         conn.close()
